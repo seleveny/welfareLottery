@@ -1,0 +1,109 @@
+<configuration scan="false">
+    <!-- 定义日志文件名称 -->
+    <property name="appName" value="red-manager"/>
+    <!-- 定义日志的根目录 TODO 日志目录改回来-->
+    <property name="logHome" value="/logs/${appName}"/>
+    <!-- 日志最大的历史 7 天 -->
+    <property name="maxHistory" value="168"/>
+    <property name="logPattern" value="%level %d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} - %m%n"/>
+    <property name="filePattern" value="yyyyMMddHH"/>
+
+    <appender name="consoleAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logHome}/${appName}.log</File>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logHome}/${appName}.log.%d{${filePattern}}</fileNamePattern>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%level %d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} %thread %logger{36} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="controllerAccessAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logHome}/${appName}-controller-access.log</File>
+        <append>true</append>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logHome}/${appName}-controller-access.log.%d{${filePattern}}</fileNamePattern>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logPattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="serviceAccessAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logHome}/${appName}-service-access.log</File>
+        <append>true</append>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logHome}/${appName}-service-access.log.%d{${filePattern}}</fileNamePattern>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logPattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="controllerErrorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logHome}/${appName}-controller-error.log</File>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logHome}/${appName}-controller-error.log.%d{${filePattern}}</fileNamePattern>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logPattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="serviceErrorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logHome}/${appName}-service-error.log</File>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logHome}/${appName}-service-error.log.%d{${filePattern}}</fileNamePattern>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logPattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="controllerAccessLogger" additivity="false">
+        <level>info</level>
+        <appender-ref ref="controllerAccessAppender"/>
+    </logger>
+
+    <logger name="serviceAccessLogger" additivity="false">
+        <level>info</level>
+        <appender-ref ref="serviceAccessAppender"/>
+    </logger>
+
+    <logger name="controllerErrorLogger" additivity="false">
+        <level>error</level>
+        <appender-ref ref="controllerErrorAppender"/>
+    </logger>
+
+    <logger name="serviceErrorLogger" additivity="false">
+        <level>error</level>
+        <appender-ref ref="serviceErrorAppender" />
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="consoleAppender" />
+    </root>
+</configuration>
