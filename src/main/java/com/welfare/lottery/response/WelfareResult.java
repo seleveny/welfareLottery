@@ -33,7 +33,7 @@ public class WelfareResult<T> implements Serializable {
         this();
         this.result = t;
     }
-    
+
     public WelfareResult(WelfareBaseException e) {
         this(e.getCode(), e.getReason());
     }

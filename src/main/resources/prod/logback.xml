@@ -100,10 +100,10 @@
 
     <logger name="serviceErrorLogger" additivity="false">
         <level>error</level>
-        <appender-ref ref="serviceErrorAppender" />
+        <appender-ref ref="serviceErrorAppender"/>
     </logger>
 
     <root level="info">
-        <appender-ref ref="consoleAppender" />
+        <appender-ref ref="consoleAppender"/>
     </root>
 </configuration>

@@ -2,7 +2,6 @@ package com.welfare.lottery.common.exception;
 
 import lombok.Data;
 
-
 import java.io.Serial;
 import java.util.UUID;
 

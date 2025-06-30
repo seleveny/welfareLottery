@@ -1,15 +1,10 @@
 package com.welfare.lottery.mapstruct;
 
-import com.welfare.lottery.entity.UserInfo;
-import com.welfare.lottery.model.vo.UserInfoVO;
-import com.welfare.lottery.request.AddUserRequest;
 import com.welfare.lottery.utils.PasswordUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
-import java.util.List;
 import java.util.Objects;
 
 /**

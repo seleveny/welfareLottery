@@ -1,9 +1,9 @@
 package com.welfare.lottery.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.welfare.lottery.entity.IdSegment;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import com.welfare.lottery.entity.IdSegment;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -20,14 +20,11 @@ import java.util.concurrent.atomic.AtomicLong;
 @Component
 public class GenerateIdService {
 
+    public static final String USER_ID = "user_id";
     private static final int PRELOAD_PERCENTAGE = 10;
-
     @Resource
     private IdSegmentService idSegmentService;
-
     private Cache<String, SegmentRange> segmentCache;
-
-    public static final String USER_ID = "user_id";
 
     @PostConstruct
     public void init() {
