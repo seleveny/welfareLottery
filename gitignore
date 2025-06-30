@@ -20,5 +20,5 @@ buildNumber.properties
 
 # IntelliJ IDEA
 /out/
-/idea/
+.idea/
 .DS_Store

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/redmanager-common/redmanager-common.iml" filepath="$PROJECT_DIR$/redmanager-common/redmanager-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redmanager-impl/redmanager-impl.iml" filepath="$PROJECT_DIR$/redmanager-impl/redmanager-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/remanager-mapper/remanager-mapper.iml" filepath="$PROJECT_DIR$/remanager-mapper/remanager-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/remanager-service/remanager-service.iml" filepath="$PROJECT_DIR$/remanager-service/remanager-service.iml" />
+    </modules>
+  </component>
+</project>
